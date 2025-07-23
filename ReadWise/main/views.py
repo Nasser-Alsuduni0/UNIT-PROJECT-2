@@ -1,7 +1,15 @@
 from django.shortcuts import render
+from books.models import Book, Review
 
 def home(request):
-    return render(request, 'main/home.html')
+    recent_reviews = Review.objects.select_related('book', 'user').order_by('-created_at')[:3]
+    popular_books = Book.objects.all().order_by('-created_at')[:4]  
+
+    context = {
+        'recent_reviews': recent_reviews,
+        'popular_books': popular_books,
+    }
+    return render(request, 'main/home.html', context)
 
 def about(request):
     return render(request, 'main/about.html')

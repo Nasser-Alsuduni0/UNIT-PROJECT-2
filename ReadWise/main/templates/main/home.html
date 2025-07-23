@@ -1,6 +1,65 @@
-{% extends 'core/base.html' %}
+{% extends 'main/base.html' %}
 {% block title %}Home - ReadWise{% endblock %}
+{% load static %}
 {% block content %}
-  <h1>Welcome to ReadWise 📚</h1>
-  <p>Your platform for discovering and reviewing great books.</p>
+
+<div id="featuredBooksCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/books2.jpg' %}" class="d-block w-100" style="max-height: 400px; object-fit: cover;" alt="Featured Book">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/books.jpg' %}" class="d-block w-100" style="max-height: 400px; object-fit: cover;"  alt="Featured Book">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#featuredBooksCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#featuredBooksCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+
+<div class="d-flex justify-content-center mb-4 gap-3">
+  <a href="#" class="btn btn-outline-primary">Browse by Genre</a>
+  <a href="#" class="btn btn-outline-secondary">Top Rated</a>
+  <a href="#" class="btn btn-outline-success">New Releases</a>
+  <a href="#" class="btn btn-outline-warning">Coming Soon</a>
+</div>
+
+
+<h3 class="mb-3">📝 Recent Reviews</h3>
+<div class="row mb-5">
+  {% for review in recent_reviews %}
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ review.book.title }}</h5>
+        <p class="card-text">{{ review.comment|truncatewords:20 }}</p>
+        <small class="text-muted">by {{ review.user.username }} - ⭐{{ review.rating }}/5</small>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <p>No reviews yet.</p>
+  {% endfor %}
+</div>
+
+
+<h3 class="mb-3">🔥 Popular Books</h3>
+<div class="row">
+  {% for book in popular_books %}
+  <div class="col-sm-3">
+    <div class="card h-100 card-fixed">
+      <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
+      <div class="card-body card-body-fixed">
+        <h5 class="card-title">{{ book.title }}</h5>
+        <p class="card-text text-muted">{{ book.author }}</p>
+        <a href="{% url 'books:book_detail' book.id %}" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}

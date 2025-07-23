@@ -1,0 +1,16 @@
+
+.card-fixed {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body-fixed {
+    flex: 1;
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
