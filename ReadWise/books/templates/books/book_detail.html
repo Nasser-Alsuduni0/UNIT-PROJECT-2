@@ -16,15 +16,10 @@
     {% empty %}
       <span class="text-muted">No genres</span>
     {% endfor %}
-  </p>
+    </p>
     <p><strong>Published:</strong> {{ book.published_date }}</p>
     <p>{{ book.description }}</p>
-
-    {% if user.is_authenticated %}
-      <a href="#" class="btn btn-primary">Write a Review</a>
-    {% else %}
-      <p class="text-muted">Login to write a review.</p>
-    {% endif %}
+    <a href="" class="btn btn-primary">Write a Review</a>
   </div>
 </div>
 

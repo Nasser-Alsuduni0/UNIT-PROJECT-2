@@ -14,3 +14,18 @@
     object-fit: cover;
 }
 
+.navbar-custom{
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.navbar .nav-link:hover {
+    color: red !important;
+    text-decoration: none;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: red; 
+    color: black !important;
+    transition: background-color 0.3s ease;
+}

@@ -13,7 +13,7 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     genres = models.ManyToManyField(Genre, related_name='books')
     description = models.TextField()
-    cover = models.ImageField(upload_to='covers/', default='covers/default.jpg')
+    cover = models.ImageField(upload_to='images/', default='images/default.jpg')
     published_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
 
