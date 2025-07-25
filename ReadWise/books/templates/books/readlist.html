@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% block title %}Your Readlist - ReadWise{% endblock %}
+
+{% block content %}
+  <h2>📚 Your Readlist</h2>
+{% for book in books %}
+  <div class="card mb-3">
+    <div class="row g-0 align-items-center">
+      <div class="col-md-2">
+        <img src="{{ book.cover.url }}" class="img-fluid rounded-start" alt="{{ book.title }}">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <h5 class="card-title">{{ book.title }}</h5>
+          <p class="card-text"><small class="text-muted">{{ book.author }}</small></p>
+          <p>{{book.description}}</p>
+        </div>
+      </div>
+      <div class="col-md-3 text-end d-flex flex-column gap-2 px-3 justify-content-center">
+        <a href="{% url 'books:book_detail' book.id %}" class="btn btn-sm btn-outline-primary">
+          <i class="bi bi-eye-fill me-1"></i> View
+        </a>
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Remove Book</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        Are you sure you want to Remove <strong>"{{ book.title }}"</strong>?
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <a href="{% url 'books:remove_from_readlist' book.id %}" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% empty %}
+  <p>No books in your Readlist.</p>
+{% endfor %}
+
+
+{% endblock %}

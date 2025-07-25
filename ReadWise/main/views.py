@@ -2,7 +2,7 @@ from django.shortcuts import render
 from books.models import Book, Review
 
 def home(request):
-    recent_reviews = Review.objects.select_related('book', 'user').order_by('-created_at')[:3]
+    recent_reviews = Review.objects.select_related('book').order_by('-created_at')[:3]
     popular_books = Book.objects.all().order_by('-created_at')[:4]  
 
     context = {

@@ -37,7 +37,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ review.book.title }}</h5>
         <p class="card-text">{{ review.comment|truncatewords:20 }}</p>
-        <small class="text-muted">by {{ review.user.username }} - ⭐{{ review.rating }}/5</small>
+        <small class="text-muted">by {{ review.reviewer_name }} - ⭐{{ review.rating }}/5</small>
       </div>
     </div>
   </div>

@@ -17,6 +17,7 @@
 .navbar-custom{
     padding-left: 5rem;
     padding-right: 5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .navbar .nav-link:hover {
@@ -28,4 +29,27 @@
     background-color: red; 
     color: black !important;
     transition: background-color 0.3s ease;
+}
+
+.star-rating {
+  direction: rtl;
+  font-size: 2rem;
+  display: inline-flex;
+  gap: 0.2rem;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: gold;
 }

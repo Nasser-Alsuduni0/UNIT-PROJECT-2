@@ -10,16 +10,20 @@
     <h2>{{ book.title }}</h2>
     <p class="text-muted"><strong>Author:</strong> {{ book.author }}</p>
     <p>
-    <strong>Genres:</strong>
-    {% for genre in book.genres.all %}
-      <span class="badge bg-secondary me-1">{{ genre.name }}</span>
-    {% empty %}
-      <span class="text-muted">No genres</span>
-    {% endfor %}
+      <strong>Genres:</strong>
+      {% for genre in book.genres.all %}
+        <span class="badge bg-secondary me-1">{{ genre.name }}</span>
+      {% empty %}
+        <span class="text-muted">No genres</span>
+      {% endfor %}
     </p>
     <p><strong>Published:</strong> {{ book.published_date }}</p>
     <p>{{ book.description }}</p>
-    <a href="" class="btn btn-primary">Write a Review</a>
+    <a href="#review-form" class="btn btn-primary">Write a Review</a>
+    <form method="POST" action="{% url 'books:add_to_readlist' book.id %}">
+     {% csrf_token %}
+    <button type="submit" class="btn btn-outline-dark mt-2">📚 Add to Readlist</button>
+    </form>
   </div>
 </div>
 
@@ -29,7 +33,18 @@
   <div class="col-md-6 mb-3">
     <div class="card">
       <div class="card-body">
-        <p class="mb-1"><strong>{{ review.user.username }}</strong> rated it ⭐ {{ review.rating }}/5</p>
+        <p class="mb-1">
+          <strong>{{ review.reviewer_name }}</strong>
+          <span class="text-warning">
+            {% for i in "12345"|make_list %}
+              {% if i <= review.rating|stringformat:"s" %}
+                ★
+              {% else %}
+                ☆
+              {% endif %}
+            {% endfor %}
+          </span>
+        </p>
         <p class="mb-0">{{ review.comment }}</p>
         <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
       </div>
@@ -39,4 +54,32 @@
     <p>No reviews yet.</p>
   {% endfor %}
 </div>
+
+<h4 class="mt-5" id="review-form">Leave a Review</h4>
+<form method="POST">
+  {% csrf_token %}
+
+  <div class="mb-3">
+    <label for="reviewer_name" class="form-label">Your Name</label>
+    <input type="text" name="reviewer_name" id="reviewer_name" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label d-block">Rating:</label>
+    <div class="star-rating">
+      {% for i in "54321" %}
+        <input type="radio" name="rating" value="{{ i }}" id="star{{ i }}">
+        <label for="star{{ i }}">★</label>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="comment" class="form-label">Comment</label>
+    <textarea name="comment" id="comment" rows="4" class="form-control" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit Review</button>
+</form>
 {% endblock %}
+

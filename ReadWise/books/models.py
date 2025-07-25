@@ -25,10 +25,12 @@ class Review(models.Model):
     RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
 
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='reviews')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    reviewer_name = models.CharField(max_length=100)  # Instead of ForeignKey to User
     rating = models.IntegerField(choices=RATING_CHOICES)
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.book.title} ({self.rating})"
+        return f"{self.reviewer_name} - {self.book.title} ({self.rating})"
+    
+
