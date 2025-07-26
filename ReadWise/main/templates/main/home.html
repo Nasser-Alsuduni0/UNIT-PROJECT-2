@@ -28,8 +28,24 @@
   <a href="#" class="btn btn-outline-warning">Coming Soon</a>
 </div>
 
+<h3 class="mb-3">🔥 Popular Books</h3>
+<div class="row">
+  {% for book in popular_books %}
+  <div class="col-sm-3">
+    <div class="card h-100 card-fixed">
+      <img src="{{ book.cover_url }}" class="card-img-top" alt="Book Cover">
+      <div class="card-body card-body-fixed">
+        <h5 class="card-title">{{ book.title }}</h5>
+        <p class="card-text text-muted">{{ book.author }}</p>
+        <a href="{% url 'books:book_detail' book.id %}" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
-<h3 class="mb-3">📝 Recent Reviews</h3>
+
+<h3 class="mb-3" style="padding-top: 2rem;">📝 Recent Reviews</h3>
 <div class="row mb-5">
   {% for review in recent_reviews %}
   <div class="col-md-4">
@@ -47,19 +63,5 @@
 </div>
 
 
-<h3 class="mb-3">🔥 Popular Books</h3>
-<div class="row">
-  {% for book in popular_books %}
-  <div class="col-sm-3">
-    <div class="card h-100 card-fixed">
-      <img src="{{ book.cover.url }}" class="card-img-top" alt="Book Cover">
-      <div class="card-body card-body-fixed">
-        <h5 class="card-title">{{ book.title }}</h5>
-        <p class="card-text text-muted">{{ book.author }}</p>
-        <a href="{% url 'books:book_detail' book.id %}" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
+
 {% endblock %}

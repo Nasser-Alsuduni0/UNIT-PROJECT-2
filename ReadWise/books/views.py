@@ -22,7 +22,7 @@ def book_detail(request, book_id):
                 rating=int(rating),
                 comment=comment
             )
-            return redirect('books:book_detail', pk=book.pk)
+            return redirect('books:book_detail', book_id=book.pk)
 
     return render(request, 'books/book_detail.html', {
         'book': book,
@@ -66,3 +66,5 @@ def remove_from_readlist(request, book_id):
         readlist.remove(book_id)
         request.session['readlist'] = readlist
     return redirect('books:view_readlist')
+
+
