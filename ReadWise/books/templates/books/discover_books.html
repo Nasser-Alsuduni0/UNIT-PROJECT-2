@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+{% block title %}Discover Books{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">📘 Discover Books</h2>
+
+<form method="get" class="mb-4">
+  <div class="row g-2 align-items-center">
+    <div class="col-auto">
+      <label for="category" class="form-label mb-0">Category:</label>
+    </div>
+    <div class="col-auto">
+      <select name="category" id="category" class="form-select form-select-sm" onchange="this.form.submit()">
+        {% for option in category_options  %}
+          <option value="{{ option }}" {% if selected_category == option %}selected{% endif %}>{{ option|title }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+</form>
+
+<div class="row">
+  {% for book in api_books %}
+    <div class="col-md-3 col-sm-6 mb-3">
+      <div class="card h-100 shadow-sm" style="font-size: 0.9rem;">
+        <img src="{{ book.cover_url }}" class="card-img-top" alt="Cover" style="height: 200px; object-fit: cover;">
+        <div class="card-body d-flex flex-column p-2">
+          <h6 class="card-title mb-1" style="font-weight: bold;">{{ book.title|truncatechars:40 }}</h6>
+          <p class="text-muted mb-1">{{ book.author|default:"Unknown" }}</p>
+          <p class="card-text" style="font-size: 0.8rem; max-height: 60px; overflow: hidden;">
+            {{ book.description|truncatewords:20 }}
+          </p>
+          <div class="mt-auto d-flex justify-content-between align-items-center">
+            <small>⭐ {{ book.rating }}</small>
+            <small class="text-muted">📅 {{ book.published }}</small>
+            <a href="{{ book.link }}" class="btn btn-sm btn-outline-primary" target="_blank">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+

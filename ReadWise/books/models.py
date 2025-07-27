@@ -15,7 +15,7 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     genres = models.ManyToManyField(Genre, related_name='books')
     description = models.TextField()
-    cover_url = models.URLField(blank=True) 
+    cover_url = models.URLField(blank=True ,null=True) 
     published_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -28,7 +28,7 @@ class Review(models.Model):
     RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
 
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='reviews')
-    reviewer_name = models.CharField(max_length=100)  # Instead of ForeignKey to User
+    reviewer_name = models.CharField(max_length=100)  
     rating = models.IntegerField(choices=RATING_CHOICES)
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

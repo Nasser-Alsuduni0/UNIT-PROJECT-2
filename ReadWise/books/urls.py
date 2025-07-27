@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:book_id>/add-to-readlist/', views.add_to_readlist, name='add_to_readlist'),
     path('readlist/', views.view_readlist, name='view_readlist'),
     path('readlist/remove/<int:book_id>/', views.remove_from_readlist, name='remove_from_readlist'),
+    path('discover/', views.discover_books, name='discover_books'),
 ]

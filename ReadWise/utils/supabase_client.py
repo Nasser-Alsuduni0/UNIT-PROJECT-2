@@ -13,13 +13,17 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
 def upload_to_supabase(file):
-    file_path = f"book-covers/{file.name}"
-    file_content = file.read()  
-    file_options = {"content-type": file.content_type}
+    file_path = f"book-covers/{file.name}"  
+    file_content = file.read()
+    file_options = {
+        "content-type": file.content_type,
+        "x-upsert": "true"
+    }
 
     response = supabase.storage.from_("book-covers").upload(file_path, file_content, file_options)
 
     if response:
-        return f"{SUPABASE_URL}/storage/v1/object/public/book-covers/{file.name}"
+       
+        return f"{SUPABASE_URL}/storage/v1/object/public/book-covers/{file_path}"
     else:
         raise Exception("Upload failed")
