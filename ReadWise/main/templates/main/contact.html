@@ -1,6 +1,42 @@
 {% extends 'main/base.html' %}
-{% block title %}Contact - ReadWise{% endblock %}
+{% block title %}Contact Us - ReadWise{% endblock %}
+
 {% block content %}
-  <h1>Contact Us</h1>
-  <p>Have questions? Reach out to us at support@readwise.com</p>
+
+{% if message_sent %}
+  <div class="alert alert-success mt-3">
+    ✅ Thank you for reaching out! We'll get back to you soon.
+  </div>
+{% endif %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="mb-4 text-center">Contact Us</h2>
+      <p class="text-center mb-4">Have a question, suggestion, or just want to say hello? Fill out the form below and I’ll get back to you as soon as possible.</p>
+
+      <form method="post" action="{% url 'main:contact' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="message" class="form-label">Your Message</label>
+          <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary px-4">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
+

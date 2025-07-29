@@ -21,12 +21,12 @@
 }
 
 .navbar .nav-link:hover {
-    color: red !important;
+    color: #adb5bd!important;
     text-decoration: none;
 }
 
 .dropdown-menu .dropdown-item:hover {
-    background-color: red; 
+    background-color: #adb5bd; 
     color: black !important;
     transition: background-color 0.3s ease;
 }
@@ -53,3 +53,8 @@
 .star-rating label:hover ~ label {
   color: gold;
 }
+
+.footer-link:hover {
+    color:  red !important;
+    transition: color 0.2s;
+  }

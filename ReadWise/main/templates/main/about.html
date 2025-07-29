@@ -1,6 +1,34 @@
 {% extends 'main/base.html' %}
-{% block title %}About - ReadWise{% endblock %}
+{% block title %}About Us - ReadWise{% endblock %}
+
 {% block content %}
-  <h1>About Us</h1>
-  <p>ReadWise is an AI-powered platform that helps users review books, share insights, and get personalized recommendations.</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8" style="padding-bottom: 2rem;">
+      <h2 class="mb-4 text-center">About ReadWise</h2>
+      <p class="lead text-center">
+        ReadWise is a personal project built with passion to help book lovers discover, explore, and enjoy great books.
+      </p>
+
+      <hr>
+
+      <p>
+        Whether you're searching for a classic novel, a trending release, or a hidden gem by an underrated author, ReadWise aims to make your reading journey easier and more enjoyable.
+      </p>
+
+      <p>
+        The platform uses powerful APIs like Google Books to deliver real-time book information including ratings, covers, descriptions, and more. It also offers helpful filters like category, rating, and pagination to make browsing efficient.
+      </p>
+
+      <p>
+        This website was designed and developed by a solo developer — combining web technologies, APIs, and a love for reading — to create a simple, useful, and modern book browsing experience.
+      </p>
+
+      <div class="text-center mt-4">
+        <a href="{% url 'books:discover_books' %}" class="btn btn-primary">Explore Books</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
+

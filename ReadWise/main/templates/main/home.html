@@ -22,13 +22,19 @@
 
 
 <div class="d-flex justify-content-center mb-4 gap-3">
-  <a href="#" class="btn btn-outline-primary">Browse by Genre</a>
-  <a href="#" class="btn btn-outline-secondary">Top Rated</a>
-  <a href="#" class="btn btn-outline-success">New Releases</a>
-  <a href="#" class="btn btn-outline-warning">Coming Soon</a>
+  <a href="url 'books:discover_books" class="btn btn-outline-primary">Browse by Genre</a>
+  <a href="url 'books:discover_books"" class="btn btn-outline-secondary">Top Rated</a>
+  <a href="url 'books:discover_books"" class="btn btn-outline-success">New Releases</a>
+  <a href="url 'books:discover_books"" class="btn btn-outline-warning">Coming Soon</a>
 </div>
 
-<h3 class="mb-3">Popular Books</h3>
+<div class="d-flex align-items-center justify-content-between">
+    <h2>Popular Books</h2>
+    <a href="{% url 'books:book_list' %}" class="More text-decoration-none" style="color:black;">
+       Find More <i class="bi bi-arrow-right"></i>
+    </a>
+</div>  
+
 <div class="row">
   {% for book in popular_books %}
   <div class="col-sm-3">
@@ -45,7 +51,7 @@
 </div>
 
 
-<h3 class="mb-3" style="padding-top: 2rem;">Recent Reviews</h3>
+<h3 class="mb-3" style="padding-top: 2rem; padding-bottom: 2rem;">Recent Reviews</h3>
 <div class="row mb-5">
   {% for review in recent_reviews %}
   <div class="col-md-4">
