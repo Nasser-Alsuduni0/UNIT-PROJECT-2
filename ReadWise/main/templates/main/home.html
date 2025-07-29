@@ -22,10 +22,10 @@
 
 
 <div class="d-flex justify-content-center mb-4 gap-3">
-  <a href="url 'books:discover_books" class="btn btn-outline-primary">Browse by Genre</a>
-  <a href="url 'books:discover_books"" class="btn btn-outline-secondary">Top Rated</a>
-  <a href="url 'books:discover_books"" class="btn btn-outline-success">New Releases</a>
-  <a href="url 'books:discover_books"" class="btn btn-outline-warning">Coming Soon</a>
+  <a href="{% url 'books:discover_books' %}"class="btn btn-outline-primary">Browse by Category</a>
+  <a href="{% url 'books:discover_books' %}" class="btn btn-outline-secondary">Top Rated</a>
+  <a href="{% url 'books:discover_books' %}" class="btn btn-outline-success">New Releases</a>
+  <a href="{% url 'books:discover_books' %}" class="btn btn-outline-warning">Coming Soon</a>
 </div>
 
 <div class="d-flex align-items-center justify-content-between">
