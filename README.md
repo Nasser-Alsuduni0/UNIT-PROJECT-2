@@ -22,4 +22,7 @@ ReadWise is built using Django and integrates with external APIs (such as Google
 - Pagination and filtering  
 - Admin management for books, genres, and reviews
 
-![UML Diagram](ReadWise/main/static/images/UML.png)
+
+- **User Stories**: [View User Stories](https://rqhdggofbbisnklwwsiz.supabase.co/storage/v1/object/public/readwise//User%20Stories.pdf)
+- **UML Diagram**: ![UML Diagram](https://rqhdggofbbisnklwwsiz.supabase.co/storage/v1/object/public/readwise//UML.png)
+- **Wireframe**: [View Wireframe](https://rqhdggofbbisnklwwsiz.supabase.co/storage/v1/object/public/readwise//WireFrame.png)
