@@ -21,11 +21,9 @@
 </div>
 
 
-<div class="d-flex justify-content-center mb-4 gap-3">
-  <a href="{% url 'books:discover_books' %}"class="btn btn-outline-primary">Browse by Category</a>
-  <a href="{% url 'books:discover_books' %}" class="btn btn-outline-secondary">Top Rated</a>
-  <a href="{% url 'books:discover_books' %}" class="btn btn-outline-success">New Releases</a>
-  <a href="{% url 'books:discover_books' %}" class="btn btn-outline-warning">Coming Soon</a>
+<div class="text-center mb-4">
+  <h2 class="fw-bold">Explore Our Book Collection</h2>
+  <p class="text-muted">Browse the latest and most popular books handpicked for modern readers.</p>
 </div>
 
 <div class="d-flex align-items-center justify-content-between">
@@ -35,12 +33,13 @@
     </a>
 </div>  
 
-<div class="row">
+
+<div class="row g-4"> 
   {% for book in popular_books %}
-  <div class="col-sm-3">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
     <div class="card h-100 card-fixed">
       <img src="{{ book.cover_url }}" class="card-img-top" alt="Book Cover">
-      <div class="card-body card-body-fixed">
+      <div class="card-body card-body-fixed d-flex flex-column">
         <h5 class="card-title">{{ book.title }}</h5>
         <p class="card-text text-muted">{{ book.author }}</p>
         <a href="{% url 'books:book_detail' book.id %}" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
@@ -51,10 +50,10 @@
 </div>
 
 
-<h3 class="mb-3" style="padding-top: 2rem; padding-bottom: 2rem;">Recent Reviews</h3>
-<div class="row mb-5">
+<h3 class="mb-4 mt-5">Recent Reviews</h3>
+<div class="row g-4 mb-5"> 
   {% for review in recent_reviews %}
-  <div class="col-md-4">
+  <div class="col-12 col-md-6 col-lg-4">
     <div class="card h-100">
       <div class="card-body">
         <h5 class="card-title">{{ review.book.title }}</h5>
@@ -67,6 +66,7 @@
     <p>No reviews yet.</p>
   {% endfor %}
 </div>
+
 
 
 

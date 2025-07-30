@@ -14,22 +14,27 @@
     object-fit: cover;
 }
 
-.navbar-custom{
-    padding-left: 5rem;
-    padding-right: 5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.navbar-custom {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.navbar .nav-link:hover {
-    color: #adb5bd!important;
-    text-decoration: none;
+.navbar-custom .nav-link {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
 }
 
-.dropdown-menu .dropdown-item:hover {
-    background-color: #adb5bd; 
-    color: black !important;
-    transition: background-color 0.3s ease;
+@media (min-width: 992px) {
+  
+  .navbar-custom form {
+    max-width: 400px;
+    margin: 0 1rem;
+  }
+  .navbar-custom .nav {
+    margin-left: auto;
+  }
 }
+
 
 .star-rating {
   direction: rtl;

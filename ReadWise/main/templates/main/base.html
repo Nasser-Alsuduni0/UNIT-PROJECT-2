@@ -12,39 +12,37 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg py-2 pt-4 navbar-custom ">
+<nav class="navbar navbar-expand-lg py-3 navbar-custom">
   <div class="container-fluid">
 
     <a class="navbar-brand d-flex align-items-center" href="{% url 'main:home' %}">
-      <img src="{% static 'images/readwise-logo1.png' %}" alt="ReadWise Logo" style="height: 48px;" class="me-2">
+      <img src="{% static 'images/readwise-logo1.png' %}" alt="ReadWise Logo" style="height: 40px;">
     </a>
 
-    <div class="dropdown me-3">
-      <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown">
-        ☰ Menu
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="{% url 'main:home' %}">Home</a></li>
-        <li><a class="dropdown-item" href="{% url 'books:book_list' %}">Popular Books</a></li>
-        <li><a class="dropdown-item" href="{% url 'books:discover_books' %}">discover books</a></li>
-        <li><a class="dropdown-item" href="#">New Releases</a></li>
-        <li><a class="dropdown-item" href="#">Coming Soon</a></li>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
+        <li class="nav-item"><a class="nav-link" href="{% url 'main:home' %}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'books:book_list' %}">Popular Books</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'books:discover_books' %}">Discover Books</a></li>
       </ul>
+
+      <form class="d-flex my-2 my-lg-0 mx-lg-3" method="get" action="{% url 'books:search_books' %}">
+        <input class="form-control" type="search" name="q" placeholder="Search books..." value="{{ query|default:'' }}">
+      </form>
+
+      <div class="d-flex align-items-center mt-2 mt-lg-0">
+        <a class="nav-link text-black px-2" href="{% url 'books:view_readlist' %}">
+          <i class="bi bi-bookmark-plus-fill me-1"></i> Readlist
+        </a>
+        <a class="nav-link text-black px-2" href="#">Sign In</a>
+      </div>
+
     </div>
-
- 
-    <form class="d-flex mx-auto flex-grow-1 px-2" method="get" action="{% url 'books:search_books' %}">
-      <input class="form-control" type="search" name="q" placeholder="Search books..." value="{{ query|default:'' }}">
-    </form>
-
-   
-     <div class="d-flex px-2">
-       <a class="nav-link text-black" href="{% url 'books:view_readlist' %}">
-         <i class="bi bi-bookmark-plus-fill me-2"></i> Readlist
-       </a>
-       <a class="nav-link text-black ms-3" href="#">Sign In</a>
-     </div>
-
   </div>
 </nav>
 
